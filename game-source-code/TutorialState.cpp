@@ -57,7 +57,7 @@ void TutorialState::draw(float dt)
     game_->window.clear();
 
     game_->window.draw(bg);
-    
+
     game_->window.draw(title_);
 
     for (const auto& line : pages_[pageNum_])
@@ -84,7 +84,7 @@ void TutorialState::loadTitle(AssetManager& assetManager)
     title_.setOrigin(title_.getGlobalBounds().width/2, title_.getGlobalBounds().height/2);
     title_.setPosition(GAME_WIDTH/2, 50);
     title_.setFillColor(sf::Color{21, 244, 238});
-    
+
     // background
     bg.setTexture(*assetManager.getTexture("aux background"));
 }
@@ -164,7 +164,10 @@ void TutorialState::loadText(AssetManager& assetManager)
     line.setString("- Fruit is worth 50 pts, pills are worth 100 pts and punching\n");
     paragraph.push_back(line);
 
-    line.setString("  a warden is worth 200 pts, which increases as you punch more.\n");
+    line.setString("  a warden is worth 200 pts, which increases as you\n");
+    paragraph.push_back(line);
+
+    line.setString("  punch more.\n");
     paragraph.push_back(line);
 
     line.setString("- If your score is within the top 5 for a particular maze, you\n");
@@ -186,16 +189,16 @@ void TutorialState::loadText(AssetManager& assetManager)
     pages_.push_back(paragraph);
 
     paragraph.clear();
-    
+
     line.setString("- While playing in the maze, press 'P' to change to the next\n");
     paragraph.push_back(line);
-    
+
     line.setString("  song and press 'O' to change to the previous song\n");
     paragraph.push_back(line);
 
     line.setString("- Press Esc to close the game at any time\n");
     paragraph.push_back(line);
-    
+
     line.setString("\n\n\n\n\n\n");
     paragraph.push_back(line);
 

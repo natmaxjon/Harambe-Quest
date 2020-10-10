@@ -40,27 +40,33 @@ void PlayerMovingState::movePlayer(float dt, float speed, playerPtr  player_, ma
     auto bottomRight = get<1>(maze_->getMazeBounds());
     auto mazeSize = bottomRight - topLeft;
 
-    if ((current_block.x == topLeft.x+0.5f*maze_->getTileLength() && player_->currentDir()==LEFT)
-        || (current_block.x == bottomRight.x-0.5f*maze_->getTileLength() && player_->currentDir()==RIGHT)
-        || (current_block.y == topLeft.y+0.5f*maze_->getTileLength() && player_->currentDir()==UP)
-        || (current_block.y == bottomRight.y-0.5f*maze_->getTileLength() && player_->currentDir()==DOWN))
+    if ((current_block.x == topLeft.x+0.5f*maze_->getTileLength() && (player_->futureDir()==LEFT))
+        || (current_block.x == bottomRight.x-0.5f*maze_->getTileLength() && player_->futureDir()==RIGHT)
+        || (current_block.y == topLeft.y+0.5f*maze_->getTileLength() && player_->futureDir()==UP)
+        || (current_block.y == bottomRight.y-0.5f*maze_->getTileLength() && player_->futureDir()==DOWN))
     {
 
         auto moveDistance = sf::Vector2f{};
 
-        if (player_->currentDir().x == 0.f)
-            moveDistance = player_->currentDir()*(-1.f)*(maze_->getHeight()-maze_->getTileLength());
+        if (player_->futureDir().x == 0.f)
+            moveDistance = player_->futureDir()*(-1.f)*(maze_->getHeight()-maze_->getTileLength());
         else
-            moveDistance = player_->currentDir()*(-1.f)*(maze_->getWidth()-maze_->getTileLength());
+            moveDistance = player_->futureDir()*(-1.f)*(maze_->getWidth()-maze_->getTileLength());
 
         auto isValidNode = maze_->getTile(position + moveDistance)->isNode();
 
         if (isValidNode)
         {
+            player_->updateDir();
             player_->moveCharacter(moveDistance);
-            return;
+        } else if (player_->futureDir() != player_->currentDir())
+        {
+            player_->updateDir();
         }
+        return;
     }
+
+
 
 
     if (!maze_->getTile(destination_block)->isNode() && (distance_to_node>=0)&&(distance_to_node<distance))

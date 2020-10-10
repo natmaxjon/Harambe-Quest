@@ -1,6 +1,7 @@
 #include "AssetManager.h"
 #include <iostream>
 #include <string>
+#include <cstring>
 
 void AssetManager::loadTexture(const string& name, const string& filePath)
 {
@@ -226,43 +227,43 @@ void AssetManager::deleteMazeData(string& mazeName)
 {
     // Get old maze from list
     auto mazeList = getMazeList();
-    
+
     // Remove name
     mazeList.erase(remove(mazeList.begin(), mazeList.end(), mazeName), mazeList.end());
-    
+
     // Clear old file
     ofstream file;
     file.open(MAZE_LIST_FILEPATH);
     file.close();
-    
+
     // Add adjusted list
     for (auto& mazeName : mazeList)
         addMazeName(mazeName);
-    
+
     auto str = MAZE_DIRECTORY + mazeName + "";
     auto n = str.length();
-    
+
     vector<string> fileSuffixes{"_layout.txt", "_orientations.txt", "_keymap.txt", "_startpositions.txt"};
-    
+
     for (auto suffix : fileSuffixes)
     {
         str = MAZE_DIRECTORY + mazeName + suffix;
-        
+
         n = str.length();
-        
+
         char filePath[n + 1];
-        
+
         strcpy(filePath, str.c_str());
-        
+
         if (remove(filePath) != 0)
             cout << "FILE NOT DELETED" << endl;
     }
-    
+
     str = HIGH_SCORE_DIRECTORY + mazeName + ".txt";
     n = str.length();
     char filePath[n + 1];
     strcpy(filePath, str.c_str());
-    
+
     if (remove(filePath) != 0)
         cout << "FILE NOT DELETED" << endl;
 }

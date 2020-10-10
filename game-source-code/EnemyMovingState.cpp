@@ -42,13 +42,31 @@ void EnemyMovingState::moveEnemy(float dt, float speed)
 
     auto topLeft = get<0>(maze_->getMazeBounds());
     auto bottomRight = get<1>(maze_->getMazeBounds());
-    if ((current_block.x == topLeft.x+0.5f*maze_->getTileLength() && enemy_->currentDir()==LEFT)
-        || (current_block.x == bottomRight.x-0.5f*maze_->getTileLength() &&  enemy_->currentDir()==RIGHT)
-        || (current_block.y == topLeft.y+0.5f*maze_->getTileLength() &&  enemy_->currentDir()==UP)
-        || (current_block.y == bottomRight.y-0.5f*maze_->getTileLength() &&  enemy_->currentDir()==DOWN))
+    auto mazeSize = bottomRight - topLeft;
+
+    if ((current_block.x == topLeft.x+0.5f*maze_->getTileLength() && (enemy_->futureDir()==LEFT))
+        || (current_block.x == bottomRight.x-0.5f*maze_->getTileLength() && enemy_->futureDir()==RIGHT)
+        || (current_block.y == topLeft.y+0.5f*maze_->getTileLength() && enemy_->futureDir()==UP)
+        || (current_block.y == bottomRight.y-0.5f*maze_->getTileLength() && enemy_->futureDir()==DOWN))
     {
-        auto moveDistance =  enemy_->currentDir()*(-1.f)*(maze_->getWidth()-maze_->getTileLength());
-        enemy_->moveCharacter(moveDistance);
+
+        auto moveDistance = sf::Vector2f{};
+
+        if (enemy_->futureDir().x == 0.f)
+            moveDistance = enemy_->futureDir()*(-1.f)*(maze_->getHeight()-maze_->getTileLength());
+        else
+            moveDistance = enemy_->futureDir()*(-1.f)*(maze_->getWidth()-maze_->getTileLength());
+
+        auto isValidNode = maze_->getTile(position + moveDistance)->isNode();
+
+        if (isValidNode)
+        {
+            enemy_->updateDir();
+            enemy_->moveCharacter(moveDistance);
+        } else if (enemy_->futureDir() != enemy_->currentDir())
+        {
+            enemy_->updateDir();
+        }
         return;
     }
 
