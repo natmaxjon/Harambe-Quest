@@ -18,6 +18,9 @@ public:
     
     bool isExitRequest(sf::Event event) const;
     
+    // copied from https://github.com/SFML/SFML/wiki/Source%3A-Letterbox-effect-using-a-view
+    sf::View getLetterboxView(sf::View view, int windowWidth, int windowHeight);
+    
     // Implement input functions that would be useful for handling input independent of state below
 
     

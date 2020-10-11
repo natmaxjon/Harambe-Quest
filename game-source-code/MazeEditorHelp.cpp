@@ -26,6 +26,9 @@ void MazeEditorHelp::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
+        
+        if (event.type == sf::Event::Resized)
+            game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
 
         if (event.type == sf::Event::MouseButtonPressed)
         {
@@ -54,6 +57,7 @@ void MazeEditorHelp::update(float dt)
 void MazeEditorHelp::draw(float dt)
 {
     game_->window.clear();
+    game_->window.setView(game_->view);
 
     game_->window.draw(bg);
     game_->window.draw(title_);

@@ -37,6 +37,11 @@ void LevelEditorState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
+        
+        if (event.type == sf::Event::Resized)
+        {
+            game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
+        }
 
         if (event.type == sf::Event::MouseButtonPressed)
         {
@@ -87,6 +92,7 @@ void LevelEditorState::processInput()
 
 void LevelEditorState::update(float dt)
 {
+    updateGridCoords();
     updateButtons();
     updateGrid();
     updateNameText();
@@ -95,6 +101,7 @@ void LevelEditorState::update(float dt)
 void LevelEditorState::draw(float dt)
 {
     game_->window.clear(sf::Color{26,26,26});
+    game_->window.setView(game_->view);
 
     game_->window.draw(background_);
     drawGrid();
@@ -685,8 +692,11 @@ sf::Vector2f LevelEditorState::map2GridPosition(sf::Vector2i position)
 {
     auto yPos = GRID_POSITION.y + floor((position.y - GRID_POSITION.y)/GRID_SPACING) * GRID_SPACING + GRID_SPACING/2.f;
     auto xPos = GRID_POSITION.x + floor((position.x - GRID_POSITION.x)/GRID_SPACING) * GRID_SPACING + GRID_SPACING/2.f;
+    
+    // Map to view
+    auto gridPos = game_->window.mapPixelToCoords(sf::Vector2i{(int)xPos,(int)yPos});
 
-    return sf::Vector2f{xPos,yPos};
+    return gridPos; //sf::Vector2f{xPos,yPos};
 }
 
 sf::Vector2i LevelEditorState::map2GridIndex(sf::Vector2f position)
@@ -905,4 +915,16 @@ void LevelEditorState::drawExistingLinks()
             game_->window.draw(linkLine_);
         }
     }
+}
+
+void LevelEditorState::updateGridCoords()
+{
+    auto viewSize = game_->view.getSize();
+    auto viewCentre = game_->view.getCenter();
+    auto topLeft = sf::Vector2f{viewCentre.x - viewSize.x/2.f,viewCentre.y - viewSize.y/2.f};
+    
+    GRID_POSITION = sf::Vector2f{topLeft.x + 5*viewSize.x/92.f,topLeft.y + viewSize.y/20.f};
+    GRID_SPACING = viewSize.y/30.f;
+    GRID_SIZE = sf::Vector2f{NUM_COLS * GRID_SPACING, NUM_ROWS * GRID_SPACING};
+    gridBounds_ = sf::FloatRect{GRID_POSITION, GRID_SIZE};
 }

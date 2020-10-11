@@ -30,6 +30,9 @@ void EndlessLevelState::processInput()
     {
        if (game_->inputManager.isExitRequest(event))
             game_->window.close();
+        
+        if (event.type == sf::Event::Resized)
+            game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
 
        if (event.type == sf::Event::KeyPressed)
        {
@@ -115,6 +118,8 @@ void EndlessLevelState::update(float dt)
 void EndlessLevelState::draw(float dt)
 {
     game_->window.clear(sf::Color{20,25,27});
+    game_->window.setView(game_->view);
+    
     game_->window.draw(background_);
     game_->window.draw(maze_);
     game_->window.draw(player_.getSprite());

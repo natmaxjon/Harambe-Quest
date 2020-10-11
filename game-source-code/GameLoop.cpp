@@ -2,6 +2,7 @@
 
 #include "Configuration.h"
 #include "SplashState.h"
+#include "InputManager.h"
 
 // Temporary
 //#include "TutorialState.h"
@@ -9,7 +10,12 @@
 
 GameLoop::GameLoop(float width, float height, const string& title, sf::Uint32 style)
 {
+    game_->view.setSize(width, height);
+    game_->view.setCenter( game_->view.getSize().x / 2, game_->view.getSize().y / 2 );
+    game_->view = game_->inputManager.getLetterboxView(game_->view, width, height);
+    
     game_->window.create(sf::VideoMode(width, height), title, style);
+    //game_->window.setView(game_->view);
     game_->window.setVerticalSyncEnabled(true);
 
     // The first state is always the splash screen

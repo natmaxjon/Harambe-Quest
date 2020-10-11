@@ -34,6 +34,9 @@ void GameOverState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
+        
+        if (event.type == sf::Event::Resized)
+            game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
 
         if (enterName_)
         {
@@ -104,6 +107,7 @@ void GameOverState::update(float dt)
 void GameOverState::draw(float dt)
 {
     game_->window.clear(sf::Color{0,23,45});
+    game_->window.setView(game_->view);
     
     game_->window.draw(restartButton_);
     game_->window.draw(mainMenuButton_);

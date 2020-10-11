@@ -22,6 +22,9 @@ void IntermediateState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
+        
+        if (event.type == sf::Event::Resized)
+            game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
     }
 }
 
@@ -37,6 +40,7 @@ void IntermediateState::update(float dt)
 void IntermediateState::draw(float dt)
 {
     game_->window.clear();
+    game_->window.setView(game_->view);
 
     for (auto line : lines_)
         game_->window.draw(line);
