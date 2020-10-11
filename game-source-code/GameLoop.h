@@ -26,6 +26,7 @@ struct Game
     AssetManager assetManager;
     InputManager inputManager;
     sf::RenderWindow window;
+    sf::View view;
 };
 
 typedef shared_ptr<Game> gamePtr; /**\typedef a shared pointer to the Game structure, to improve readability */
