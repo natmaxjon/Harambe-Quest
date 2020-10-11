@@ -234,7 +234,6 @@ void GameOverState::loadSprites(AssetManager& assetManager)
     petals_.setPosition(GAME_WIDTH, GAME_HEIGHT);
     petals_.setScale(1.5f, 1.5f);
 
-    assetManager.loadTexture("grass", "resources/graphics/grass.png");
     bgTexture_ = *assetManager.getTexture("grass");
     bgTexture_.setRepeated(true);
     grass_.setTexture(bgTexture_);
