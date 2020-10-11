@@ -24,7 +24,7 @@ void HighScoreState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
-        
+
         if (event.type == sf::Event::Resized)
             game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
 
@@ -48,6 +48,13 @@ void HighScoreState::processInput()
 
 void HighScoreState::update(float dt)
 {
+    timeFlash += dt;
+    auto tFlash = 1200;
+    auto colors = vector<sf::Color>{Gold,sf::Color::White, Silver,sf::Color::White, Bronze, sf::Color::White};
+    auto col = static_cast<int>((timeFlash/tFlash) * 6) % 6;
+
+    title_.setFillColor(colors[col]);
+
     exitButton_.update(game_->window);
 
     if (mazeIt != mazeNames_.begin())
@@ -197,9 +204,7 @@ void HighScoreState::loadHighScores(AssetManager& assetManager)
         entries.push_back(entry);
     }
 
-    auto Gold = sf::Color(212,175,55);
-    auto Silver = sf::Color(192,192,192);
-    auto Bronze = sf::Color(205,127,50);
+
     entries[0].setFillColor(Gold);
     entries[1].setFillColor(Silver);
     entries[2].setFillColor(Bronze);

@@ -29,7 +29,7 @@ void CreditsState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
-        
+
         if (event.type == sf::Event::Resized)
             game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
 
@@ -89,7 +89,7 @@ void CreditsState::loadTitle(AssetManager& assetManager)
     title_.setOrigin(title_.getGlobalBounds().width/2, title_.getGlobalBounds().height/2);
     title_.setPosition(GAME_WIDTH/2, 50);
     title_.setFillColor(sf::Color{21, 244, 238});
-    
+
     // background
     bg.setTexture(*assetManager.getTexture("aux background"));
 }
@@ -104,7 +104,7 @@ void CreditsState::loadText(AssetManager& assetManager)
     assetManager.loadCredits();
     vector<string> credits = assetManager.getCredits();
 
-    for (int i = 0; i< 14; i++)
+    for (int i = 0; i< 15; i++)
     {
         line.setString(credits[i]);
         paragraph.push_back(line);
@@ -117,8 +117,8 @@ void CreditsState::loadText(AssetManager& assetManager)
 
     paragraph.clear();
 
-    for (int j = 14; j<31; j++)
-    {   int i = j-14;
+    for (int j = 15; j<31; j++)
+    {   int i = j-15;
         line.setString(credits[j]);
         paragraph.push_back(line);
         paragraph[i].setScale(0.7,0.7);

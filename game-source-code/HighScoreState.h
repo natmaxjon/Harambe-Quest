@@ -10,7 +10,7 @@
 class HighScoreState: public State
 {
 public:
-    
+
     /// Constructor
     /// @param game a shared pointer to a structure containing the game's state machine, asset manager, input manager and display window
     HighScoreState(gamePtr game);
@@ -31,6 +31,8 @@ private:
     string currentMaze_;
     vector<string>::iterator mazeIt;
 
+    float timeFlash = 0;
+
     sf::Text mazeDisplay_;
     vector<sf::Text> entries;
     sf::Text title_;
@@ -42,6 +44,11 @@ private:
     void previousMaze();
     void nextMaze();
     void checkMusic();
+
+    sf::Color Gold = sf::Color(212,175,55);
+    sf::Color Silver = sf::Color(192,192,192);
+    sf::Color Bronze = sf::Color(205,127,50);
+
 
 };
 
