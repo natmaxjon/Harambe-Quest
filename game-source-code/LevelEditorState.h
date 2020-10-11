@@ -79,10 +79,7 @@ public:
     void draw(float dt) override;
 
 private:
-    sf::Vector2f GRID_POSITION{45,45};
-    float GRID_SPACING = 30.f;
-    sf::Vector2f GRID_SIZE{NUM_COLS * GRID_SPACING, NUM_ROWS * GRID_SPACING};
-    sf::FloatRect gridBounds_{GRID_POSITION, GRID_SIZE};
+    const sf::FloatRect gridBounds_{GRID_POSITION, GRID_SIZE};
 
     gamePtr game_;
 
@@ -151,13 +148,13 @@ private:
     // Updating state elements
     void updateButtons();
     void updateGrid();
-    void updateGridCoords();
     bool isMousePressed();
     bool gridContainsMouse();
     void removeGridSprite(sf::Vector2f position);
     void addGridSprite(sf::Vector2f position);
     void updateKeyMap(sf::Vector2f position, sf::Vector2i index);
     sf::Vector2f map2GridPosition(sf::Vector2i position);
+    sf::Vector2f map2GridPosition(sf::Vector2f position);
     sf::Vector2i map2GridIndex(sf::Vector2f position);
     sf::Sprite createGridSprite(sf::Vector2f position);
     char getLayoutChar();

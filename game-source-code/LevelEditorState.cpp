@@ -92,7 +92,6 @@ void LevelEditorState::processInput()
 
 void LevelEditorState::update(float dt)
 {
-    updateGridCoords();
     updateButtons();
     updateGrid();
     updateNameText();
@@ -537,7 +536,7 @@ void LevelEditorState::handleKeyLinkEvent()
 
 bool LevelEditorState::isKeyBlock()
 {
-    auto pos = map2GridPosition(sf::Mouse::getPosition(game_->window));
+    auto pos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
     auto index = map2GridIndex(pos);
     auto layoutChar = layout_[index.y].at(index.x);
 
@@ -549,7 +548,7 @@ bool LevelEditorState::isKeyBlock()
 
 bool LevelEditorState::isGateBlock()
 {
-    auto pos = map2GridPosition(sf::Mouse::getPosition(game_->window));
+    auto pos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
     auto index = map2GridIndex(pos);
     auto layoutChar = layout_[index.y].at(index.x);
 
@@ -566,7 +565,7 @@ void LevelEditorState::selectKey()
     currentSelection_ = BuildSelection::NOTHING;
     applyRadioStyle();
 
-    auto pos = map2GridPosition(sf::Mouse::getPosition(game_->window));
+    auto pos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
     selectedKeyPos_ = pos;
     selectedKeyIndex_ = map2GridIndex(pos);
 }
@@ -574,7 +573,7 @@ void LevelEditorState::selectKey()
 void LevelEditorState::addGate()
 {
     game_->assetManager.playSound("gate link");
-    auto pos = map2GridPosition(sf::Mouse::getPosition(game_->window));
+    auto pos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
 
     keyMapPos_[selectedKeyPos_].push_back(pos);
     keyMapIndices_[selectedKeyIndex_].push_back(map2GridIndex(pos));
@@ -608,7 +607,7 @@ void LevelEditorState::updateGrid()
     if (currentSelection_ == BuildSelection::NOTHING)
         return;
 
-    auto mousePos = map2GridPosition(sf::Mouse::getPosition(game_->window));
+    auto mousePos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
 
     if (isMousePressed() && gridContainsMouse())
     {
@@ -688,15 +687,12 @@ void LevelEditorState::updateKeyMap(sf::Vector2f position, sf::Vector2i index)
         keyMapIndices_.erase(pos);
 }
 
-sf::Vector2f LevelEditorState::map2GridPosition(sf::Vector2i position)
+sf::Vector2f LevelEditorState::map2GridPosition(sf::Vector2f position)
 {
     auto yPos = GRID_POSITION.y + floor((position.y - GRID_POSITION.y)/GRID_SPACING) * GRID_SPACING + GRID_SPACING/2.f;
     auto xPos = GRID_POSITION.x + floor((position.x - GRID_POSITION.x)/GRID_SPACING) * GRID_SPACING + GRID_SPACING/2.f;
     
-    // Map to view
-    auto gridPos = game_->window.mapPixelToCoords(sf::Vector2i{(int)xPos,(int)yPos});
-
-    return gridPos; //sf::Vector2f{xPos,yPos};
+    return sf::Vector2f{xPos,yPos};
 }
 
 sf::Vector2i LevelEditorState::map2GridIndex(sf::Vector2f position)
@@ -807,7 +803,7 @@ void LevelEditorState::updateCharacters()
         }
         else if (gridContainsMouse())
         {
-            auto mousePos = sf::Mouse::getPosition(game_->window);
+            auto mousePos = game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window));
             buildButtons_[characters[i]].setPosition(map2GridPosition(mousePos));
         }
     }
@@ -841,11 +837,11 @@ void LevelEditorState::drawGridNumbers()
 
 void LevelEditorState::drawHighlightSquare()
 {
-    auto mousePos = sf::Mouse::getPosition(game_->window);
+    auto mousePos = map2GridPosition(game_->window.mapPixelToCoords(sf::Mouse::getPosition(game_->window)));
 
     if (gridContainsMouse())
     {
-        highlightSquare_.setPosition(map2GridPosition(mousePos));
+        highlightSquare_.setPosition(mousePos);
         game_->window.draw(highlightSquare_);
     }
 }
@@ -915,16 +911,4 @@ void LevelEditorState::drawExistingLinks()
             game_->window.draw(linkLine_);
         }
     }
-}
-
-void LevelEditorState::updateGridCoords()
-{
-    auto viewSize = game_->view.getSize();
-    auto viewCentre = game_->view.getCenter();
-    auto topLeft = sf::Vector2f{viewCentre.x - viewSize.x/2.f,viewCentre.y - viewSize.y/2.f};
-    
-    GRID_POSITION = sf::Vector2f{topLeft.x + 5*viewSize.x/92.f,topLeft.y + viewSize.y/20.f};
-    GRID_SPACING = viewSize.y/30.f;
-    GRID_SIZE = sf::Vector2f{NUM_COLS * GRID_SPACING, NUM_ROWS * GRID_SPACING};
-    gridBounds_ = sf::FloatRect{GRID_POSITION, GRID_SIZE};
 }

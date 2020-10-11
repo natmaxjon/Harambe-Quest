@@ -87,9 +87,9 @@ const auto NUM_ROWS = 25;
 const auto NUM_COLS = 23;
 
 // Level Editor State
-//const auto GRID_POSITION = sf::Vector2f{45,45};
-//const auto GRID_SPACING = 30.f;
-//const auto GRID_SIZE = sf::Vector2f{NUM_COLS * GRID_SPACING, NUM_ROWS * GRID_SPACING};
+const auto GRID_POSITION = sf::Vector2f{45,45};
+const auto GRID_SPACING = 30.f;
+const auto GRID_SIZE = sf::Vector2f{NUM_COLS * GRID_SPACING, NUM_ROWS * GRID_SPACING};
 const auto LINK_LINE_THICKNESS = 3.f;
 const auto PI = 2*acos(0.0);
 
