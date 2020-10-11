@@ -2,6 +2,7 @@
 
 #include "Configuration.h"
 #include "SplashState.h"
+#include "icon1024.h"
 
 // Temporary
 //#include "TutorialState.h"
@@ -10,6 +11,8 @@
 GameLoop::GameLoop(float width, float height, const string& title, sf::Uint32 style)
 {
     game_->window.create(sf::VideoMode(width, height), title, style);
+    game_->window.setIcon( icon.width,  icon.height, icon.pixel_data );
+
     game_->window.setVerticalSyncEnabled(true);
 
     // The first state is always the splash screen
