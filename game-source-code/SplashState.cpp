@@ -113,6 +113,8 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("menu background", MENU_BACKGROUND_FILEPATH);
     assetManager.loadTexture("aux background", AUX_BACKGROUND_FILEPATH);
 
+    assetManager.loadTexture("grass", GRASS_FILEPATH);
+
     // Buttons
     assetManager.loadTexture("menu button", MENU_BUTTON_FILEPATH);
     assetManager.loadTexture("exit button", EXIT_BUTTON_FILEPATH);
@@ -163,6 +165,11 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("hit up", HIT_HARAMBE_UP);
     assetManager.loadTexture("hit down", HIT_HARAMBE_DOWN);
 
+    assetManager.loadTexture("hit super left", HIT_SUPER_HARAMBE_LEFT);
+    assetManager.loadTexture("hit super right", HIT_SUPER_HARAMBE_RIGHT);
+    assetManager.loadTexture("hit super up", HIT_SUPER_HARAMBE_UP);
+    assetManager.loadTexture("hit super down", HIT_SUPER_HARAMBE_DOWN);
+
     assetManager.loadTexture("harambe dead", HARAMBE_DEAD);
     assetManager.loadTexture("harambe head", HARAMBE_HEAD );
     assetManager.loadTexture("red police", RED_POLICE);
@@ -177,7 +184,7 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("green head", GREEN_HEAD);
     assetManager.loadTexture("purple head", PURPLE_HEAD);
     assetManager.loadTexture("brown head", BROWN_HEAD);
-    
+
     // Coffin textures
     assetManager.loadTexture("coffin0", COFFIN_1);
     assetManager.loadTexture("coffin1", COFFIN_2);
@@ -187,7 +194,7 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("coffin5", COFFIN_6);
     assetManager.loadTexture("coffin6", COFFIN_7);
     assetManager.loadTexture("coffin7", COFFIN_8);
-    
+
     // Piao Piao
     assetManager.loadTexture("petal0", PETALS_1);
     assetManager.loadTexture("petal1", PETALS_2);
@@ -200,7 +207,7 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("petal8", PETALS_9);
     assetManager.loadTexture("petal9", PETALS_10);
     assetManager.loadTexture("petal10", PETALS_11);
-    
+
     assetManager.loadTexture("sakura tree", SAKURA_TREE);
     assetManager.loadTexture("piao piao", PIAO_PIAO);
 

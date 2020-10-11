@@ -100,6 +100,8 @@ const auto SPLASH_BACKGROUND_FILEPATH = "resources/graphics/splash-screen.png";
 const auto MENU_BACKGROUND_FILEPATH = "resources/graphics/bg1.png";
 const auto AUX_BACKGROUND_FILEPATH = "resources/graphics/bg4.png";
 
+const auto GRASS_FILEPATH = "resources/graphics/grass.png";
+
 const auto MENU_BUTTON_FILEPATH = "resources/graphics/menu-button.png";
 const auto EXIT_BUTTON_FILEPATH = "resources/graphics/exit-button.png";
 const auto ERASE_BUTTON_FILEPATH = "resources/graphics/erase-button.png";
@@ -135,6 +137,11 @@ const auto HIT_HARAMBE_RIGHT = "resources/graphics/hit-harambe-right.png";
 const auto HIT_HARAMBE_LEFT = "resources/graphics/hit-harambe-left.png";
 const auto HIT_HARAMBE_UP = "resources/graphics/hit-harambe-up.png";
 const auto HIT_HARAMBE_DOWN = "resources/graphics/hit-harambe-down.png";
+
+const auto HIT_SUPER_HARAMBE_RIGHT = "resources/graphics/hit-super-harambe-right.png";
+const auto HIT_SUPER_HARAMBE_LEFT = "resources/graphics/hit-super-harambe-left.png";
+const auto HIT_SUPER_HARAMBE_UP = "resources/graphics/hit-super-harambe-up.png";
+const auto HIT_SUPER_HARAMBE_DOWN = "resources/graphics/hit-super-harambe-down.png";
 
 const auto HARAMBE_DEAD = "resources/graphics/harambe-dead.png";
 const auto HARAMBE_HEAD = "resources/graphics/harambe-head.png";

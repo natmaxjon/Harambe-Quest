@@ -51,7 +51,7 @@ void MazeSelectState::processInput()
                 game_->assetManager.playSong(Soundboard::getPlaylist()[0]);
                 game_->stateMachine.addState(make_unique<IntermediateState>(game_, currentMaze_, 1));
             }
-            
+
             if (deleteButton_.isHover(game_->window))
                 deleteMaze();
         }
@@ -66,14 +66,14 @@ void MazeSelectState::update(float dt)
     {
         leftButton_.setHoverColour(sf::Color::Yellow);
         deleteButton_.setHoverColour(sf::Color::Yellow);
-        
+
         playButton_.setPosition(GAME_WIDTH/2 - 100, 850.f);
         deleteButton_.setPosition(GAME_WIDTH/2 + 100, 850.f);
     }
     else
     {
         leftButton_.setHoverColour(sf::Color::Red);
-        
+
         deleteButton_.setPosition(2000.f, 2000.f);
         playButton_.setPosition(GAME_WIDTH/2, 850.f);
     }
@@ -132,13 +132,13 @@ void MazeSelectState::loadButtons(AssetManager& assetManager)
     playButton_.setPosition(GAME_WIDTH/2 - 100, 850.f);
     playButton_.setSpriteScale(0.5f, 0.5f);
     playButton_.setTextScale(0.5f, 0.5f);
-    
+
     deleteButton_ = Button{texture, font};
     deleteButton_.setString("DELETE");
     deleteButton_.setPosition(GAME_WIDTH/2 + 100, 850.f);
     deleteButton_.setSpriteScale(0.5f, 0.5f);
     deleteButton_.setTextScale(0.5f, 0.5f);
-    
+
 }
 
 void MazeSelectState::loadTitle(AssetManager& assetManager)
@@ -200,7 +200,7 @@ void MazeSelectState::loadMazeData(AssetManager& assetManager)
 
     assetManager.loadRotationMap("current rotation", currentMaze_);
     rotationMap_ = assetManager.getRotationMap("current rotation");
-    
+
     assetManager.loadStartPos("current starts", currentMaze_);
     startPos_ = assetManager.getStartPos("current starts");
 
@@ -212,12 +212,12 @@ void MazeSelectState::loadMazeData(AssetManager& assetManager)
 void MazeSelectState::loadCharacters(AssetManager& assetManager)
 {
     sf::Sprite sprite;
-    
+
     sprite = sf::Sprite{*assetManager.getTexture("harambe head")};
     sprite.setOrigin(sprite.getGlobalBounds().width/2.f, sprite.getGlobalBounds().height/2.f);
     sprite.setScale(1.5f, 1.5f);
     characters_.push_back(sprite);
-    
+
     auto textureString = vector<string>
     {
         "red head",
@@ -238,20 +238,19 @@ void MazeSelectState::loadCharacters(AssetManager& assetManager)
 void MazeSelectState::drawMaze()
 {
     auto& assetManager = game_->assetManager;
-    
-    assetManager.loadTexture("grass", "resources/graphics/grass.png");
+
     bgTexture_ = *assetManager.getTexture("grass");
     bgTexture_.setRepeated(true);
     background_.setTexture(bgTexture_);
     background_.setPosition(topLeft_);
     background_.setTextureRect(sf::IntRect(topLeft_.x, topLeft_.y, NUM_COLS*tileLength_ - 25, NUM_ROWS*tileLength_ - 25));
-    
+
     game_->window.draw(background_);
-    
+
     sf::Sprite tile;
-    
+
     vector<sf::Sprite> walls;
-    
+
     for (auto row = 0; row < layout_.size(); row++)
     {
         for (auto col = 0; col < layout_[row].size(); col++)
@@ -259,25 +258,25 @@ void MazeSelectState::drawMaze()
             tile = char2Sprite(layout_[row].at(col));
             tile.setPosition(topLeft_.x + col * tileLength_, topLeft_.y + row * tileLength_);
             tile.setRotation(char2Angle(rotationMap_[row].at(col)));
-            
+
             if (layout_[row].at(col) == 'W' || layout_[row].at(col) == 'C')
                 walls.push_back(tile);
             else
                 game_->window.draw(tile);
         }
     }
-    
+
     // Draw walls last
     for (auto& wall : walls)
         game_->window.draw(wall);
-    
+
     // Draw characters
     characters_[0].setPosition(topLeft_ + tileLength_*startPos_[0]);
     characters_[1].setPosition(topLeft_ + tileLength_*startPos_[1]);
     characters_[2].setPosition(topLeft_ + tileLength_*startPos_[2]);
     characters_[3].setPosition(topLeft_ + tileLength_*startPos_[3]);
     characters_[4].setPosition(topLeft_ + tileLength_*startPos_[4]);
-    
+
     for (auto& character : characters_)
         game_->window.draw(character);
 }
@@ -349,22 +348,22 @@ void MazeSelectState::deleteMaze()
     if (mazeIt != mazeNames_.begin())
     {
         game_->assetManager.deleteMazeData(currentMaze_);
-        
+
         auto temp = mazeIt - mazeNames_.begin();
-        
+
         game_->assetManager.playSound("button click");
-        
+
         game_->assetManager.loadMazeList();
         mazeNames_ = game_->assetManager.getMazeList();
 
         mazeIt = mazeNames_.begin();
-        
+
         mazeIt += temp - 1;
 
         loadMazeData(game_->assetManager);
-        
+
         return;
     }
-    
+
     game_->assetManager.playSound("error");
 }

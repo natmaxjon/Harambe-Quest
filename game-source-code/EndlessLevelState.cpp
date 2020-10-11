@@ -208,6 +208,16 @@ void EndlessLevelState::loadCharacters(AssetManager& assetManager)
     player_sprites["kill hit up"] = assetManager.getTexture("hit up");
     player_sprites["kill hit down"] = assetManager.getTexture("hit down");
 
+    player_sprites["hit super left"] = assetManager.getTexture("hit super left");
+    player_sprites["hit super right"] = assetManager.getTexture("hit super right");
+    player_sprites["hit super up"] = assetManager.getTexture("hit super up");
+    player_sprites["hit super down"] = assetManager.getTexture("hit super down");
+
+    player_sprites["kill hit super left"] = assetManager.getTexture("hit super left");
+    player_sprites["kill hit super right"] = assetManager.getTexture("hit super right");
+    player_sprites["kill hit super up"] = assetManager.getTexture("hit super up");
+    player_sprites["kill hit super down"] = assetManager.getTexture("hit super down");
+
     player_sprites["dead"] = assetManager.getTexture("harambe dead");
 
     player_ = Player{player_sprites, maze_.getPlayerStart(), &maze_};
@@ -273,7 +283,6 @@ void EndlessLevelState::loadInfoBar(AssetManager& assetManager)
     mazeHeading_.setOutlineThickness(2.f);
     mazeHeading_.setScale(1.2,1.2);
 
-    assetManager.loadTexture("grass", "resources/graphics/grass.png");
     bgTexture_ = *assetManager.getTexture("grass");
     bgTexture_.setRepeated(true);
     background_.setTexture(bgTexture_);

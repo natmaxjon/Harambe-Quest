@@ -19,13 +19,36 @@ void PlayerEatState::update(float dt)
 
     string textureName;
     if (player_->currentDir() == RIGHT)
-        textureName = "hit right";
+    {
+        if (player_->isSuper())
+            textureName = "hit super right";
+        else
+            textureName = "hit right";
+    }
+
     if (player_->currentDir() == LEFT)
-        textureName = "hit left";
+    {
+        if (player_->isSuper())
+            textureName = "hit super left";
+        else
+            textureName = "hit left";
+    }
+
     if (player_->currentDir() == UP)
-        textureName = "hit up";
+    {
+        if (player_->isSuper())
+            textureName = "hit super up";
+        else
+            textureName = "hit up";
+    }
+
     if (player_->currentDir() == DOWN)
-        textureName = "hit down";
+    {
+        if (player_->isSuper())
+            textureName = "hit super down";
+        else
+            textureName = "hit down";
+    }
 
     player_->animate(dt, textureName);
 }

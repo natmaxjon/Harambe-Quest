@@ -78,7 +78,7 @@ void LevelEditorState::processInput()
         {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
                 rotateSelectedSprite();
-            
+
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::C)
                 clear();
         }
@@ -180,7 +180,7 @@ void LevelEditorState::loadBuildButtons(AssetManager& assetManager)
     button = Button{assetManager.getTexture("blank-button")};
     button.setPosition(GRID_POSITION.x + GRID_SIZE.x/2, GRID_POSITION.y - 20);
     buildButtons_[BuildSelection::TEXTBOX] = button;
-    
+
     // Clear button is unique
     buildButtons_[BuildSelection::ERASER].setSpriteScale(1.f, 1.f);
     buildButtons_[BuildSelection::ERASER].setOutline(0.f);
@@ -194,7 +194,7 @@ void LevelEditorState::loadBuildButtons(AssetManager& assetManager)
     button.setOutline(2.f);
     button.setPosition(390.f, 570.f);
     buildButtons_[BuildSelection::PLAYER] = button;
-    
+
     textureString = vector<string>
     {
         "red head",
@@ -229,10 +229,9 @@ void LevelEditorState::loadGrid()
     loadGridNumbers();
     loadHighlightSquare();
     loadKeyLinkLine();
-    
+
     // grass
-    
-    game_->assetManager.loadTexture("grass", "resources/graphics/grass.png");
+
     bgTexture_ = *game_->assetManager.getTexture("grass");
     bgTexture_.setRepeated(true);
     background_.setTexture(bgTexture_);
@@ -363,19 +362,19 @@ bool LevelEditorState::saveSuccessful()
         displayName_.setFillColor(sf::Color::Red);
         return false;
     }
-    
+
     if (mazeHasNoEdibles())
     {
         game_->assetManager.playSound("error");
         return false;
     }
-    
+
     game_->assetManager.playSound("button click");
 
     auto& assetMan = game_->assetManager;
 
     assetMan.addMazeName(mazeName_);
-    
+
     assetMan.writeLayout(layout_, mazeName_);
     assetMan.writeRotationMap(rotationMap_, mazeName_);
     assetMan.writeKeyMap(keyMapIndices_, mazeName_);
@@ -390,22 +389,22 @@ bool LevelEditorState::saveSuccessful()
 
     auto highScores = vector<pair<string,int>>(5, make_pair("-----", 0));
     assetMan.writeHighScores(highScores, mazeName_);
-    
+
     return true;
 }
 
 bool LevelEditorState::mazeHasNoEdibles()
 {
     auto numEdibles = 0;
-    
+
     for (auto row : layout_)
         for (auto col : row)
             if (col == 'F' || col == 'S' || col == 'P')
                 numEdibles++;
-    
+
     if (numEdibles == 0)
         return true;
-    
+
     return false;
 }
 
@@ -578,7 +577,7 @@ void LevelEditorState::rotateSelectedSprite()
 {
     if (currentSelection_ == BuildSelection::ERASER)
         return;
-    
+
     auto angle = (int)buildButtons_[currentSelection_].getRotation();
     angle = (angle + 90) % 360;
     buildButtons_[currentSelection_].setRotation(angle);
@@ -845,17 +844,17 @@ void LevelEditorState::drawGridSprites()
 {
     vector<sf::Sprite> walls;
     sf::Vector2i index;
-    
+
     for (auto const& [pos, sprite] : gridSprites_)
     {
         index = map2GridIndex(sf::Vector2f{pos.first,pos.second});
-        
+
         if (layout_[index.y].at(index.x) == 'W' || layout_[index.y].at(index.x) == 'C')
             walls.push_back(sprite);
         else
             game_->window.draw(sprite);
     }
-    
+
     // Draw walls last
     for (auto& wall : walls)
         game_->window.draw(wall);
