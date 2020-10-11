@@ -2,7 +2,7 @@
 
 #include "Configuration.h"
 #include "SplashState.h"
-#include "icon1024.h"
+#include "icon64.h"
 
 // Temporary
 //#include "TutorialState.h"
