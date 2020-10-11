@@ -2,6 +2,8 @@
 #define CONFIGURATION_H
 
 #include <SFML/Graphics.hpp>
+#include "ResourcePath.hpp"
+
 #include <cmath>
 
 /*---- Game Properties ----*/
@@ -96,151 +98,151 @@ const auto PI = 2*acos(0.0);
 /*-------File Paths ------*/
 
 // Graphics
-const auto SPLASH_BACKGROUND_FILEPATH = "resources/graphics/splash-screen.png";
-const auto MENU_BACKGROUND_FILEPATH = "resources/graphics/bg1.png";
-const auto AUX_BACKGROUND_FILEPATH = "resources/graphics/bg4.png";
-const auto HS_BACKGROUND_FILEPATH = "resources/graphics/bg6.png";
+const auto SPLASH_BACKGROUND_FILEPATH = resourcePath() + "resources/graphics/splash-screen.png";
+const auto MENU_BACKGROUND_FILEPATH = resourcePath() + "resources/graphics/bg1.png";
+const auto AUX_BACKGROUND_FILEPATH = resourcePath() + "resources/graphics/bg4.png";
+const auto HS_BACKGROUND_FILEPATH = resourcePath() + "resources/graphics/bg6.png";
 
-const auto GRASS_FILEPATH = "resources/graphics/grass.png";
+const auto GRASS_FILEPATH = resourcePath() + "resources/graphics/grass.png";
 
-const auto MENU_BUTTON_FILEPATH = "resources/graphics/menu-button.png";
-const auto EXIT_BUTTON_FILEPATH = "resources/graphics/exit-button.png";
-const auto ERASE_BUTTON_FILEPATH = "resources/graphics/erase-button.png";
-const auto LEFT_TRIANGLE_FILEPATH = "resources/graphics/left-triangle.png";
-const auto RIGHT_TRIANGLE_FILEPATH = "resources/graphics/right-triangle.png";
+const auto MENU_BUTTON_FILEPATH = resourcePath() + "resources/graphics/menu-button.png";
+const auto EXIT_BUTTON_FILEPATH = resourcePath() + "resources/graphics/exit-button.png";
+const auto ERASE_BUTTON_FILEPATH = resourcePath() + "resources/graphics/erase-button.png";
+const auto LEFT_TRIANGLE_FILEPATH = resourcePath() + "resources/graphics/left-triangle.png";
+const auto RIGHT_TRIANGLE_FILEPATH = resourcePath() + "resources/graphics/right-triangle.png";
 
-const auto PLAYER_DEFAULT_FILEPATH = "resources/graphics/pacman.png";
-const auto PLAYER_SUPER_FILEPATH = "resources/graphics/pacman_super.png";
-const auto ENEMY_DEFAULT_FILEPATH = "resources/graphics/ghost.png";
+const auto PLAYER_DEFAULT_FILEPATH = resourcePath() + "resources/graphics/pacman.png";
+const auto PLAYER_SUPER_FILEPATH = resourcePath() + "resources/graphics/pacman_super.png";
+const auto ENEMY_DEFAULT_FILEPATH = resourcePath() + "resources/graphics/ghost.png";
 
 /*---------------- Harambe Sprites --------------------------*/
-const auto HARAMBE_RIGHT = "resources/graphics/harambe-right.png";
-const auto HARAMBE_LEFT = "resources/graphics/harambe-left.png";
-const auto HARAMBE_UP = "resources/graphics/harambe-up.png";
-const auto HARAMBE_DOWN = "resources/graphics/harambe-down.png";
+const auto HARAMBE_RIGHT = resourcePath() + "resources/graphics/harambe-right.png";
+const auto HARAMBE_LEFT = resourcePath() + "resources/graphics/harambe-left.png";
+const auto HARAMBE_UP = resourcePath() + "resources/graphics/harambe-up.png";
+const auto HARAMBE_DOWN = resourcePath() + "resources/graphics/harambe-down.png";
 
-const auto SUPER_HARAMBE_RIGHT = "resources/graphics/super-harambe-right.png";
-const auto SUPER_HARAMBE_LEFT = "resources/graphics/super-harambe-left.png";
-const auto SUPER_HARAMBE_UP = "resources/graphics/super-harambe-up.png";
-const auto SUPER_HARAMBE_DOWN = "resources/graphics/super-harambe-down.png";
+const auto SUPER_HARAMBE_RIGHT = resourcePath() + "resources/graphics/super-harambe-right.png";
+const auto SUPER_HARAMBE_LEFT = resourcePath() + "resources/graphics/super-harambe-left.png";
+const auto SUPER_HARAMBE_UP = resourcePath() + "resources/graphics/super-harambe-up.png";
+const auto SUPER_HARAMBE_DOWN = resourcePath() + "resources/graphics/super-harambe-down.png";
 
-const auto KILL_HARAMBE_RIGHT = "resources/graphics/kill-harambe-right.png";
-const auto KILL_HARAMBE_LEFT = "resources/graphics/kill-harambe-left.png";
-const auto KILL_HARAMBE_UP = "resources/graphics/kill-harambe-up.png";
-const auto KILL_HARAMBE_DOWN = "resources/graphics/kill-harambe-down.png";
+const auto KILL_HARAMBE_RIGHT = resourcePath() + "resources/graphics/kill-harambe-right.png";
+const auto KILL_HARAMBE_LEFT = resourcePath() + "resources/graphics/kill-harambe-left.png";
+const auto KILL_HARAMBE_UP = resourcePath() + "resources/graphics/kill-harambe-up.png";
+const auto KILL_HARAMBE_DOWN = resourcePath() + "resources/graphics/kill-harambe-down.png";
 
-const auto KILL_SUPER_HARAMBE_RIGHT = "resources/graphics/kill-super-harambe-right.png";
-const auto KILL_SUPER_HARAMBE_LEFT = "resources/graphics/kill-super-harambe-left.png";
-const auto KILL_SUPER_HARAMBE_UP = "resources/graphics/kill-super-harambe-up.png";
-const auto KILL_SUPER_HARAMBE_DOWN = "resources/graphics/kill-super-harambe-down.png";
+const auto KILL_SUPER_HARAMBE_RIGHT = resourcePath() + "resources/graphics/kill-super-harambe-right.png";
+const auto KILL_SUPER_HARAMBE_LEFT = resourcePath() + "resources/graphics/kill-super-harambe-left.png";
+const auto KILL_SUPER_HARAMBE_UP = resourcePath() + "resources/graphics/kill-super-harambe-up.png";
+const auto KILL_SUPER_HARAMBE_DOWN = resourcePath() + "resources/graphics/kill-super-harambe-down.png";
 
-const auto HIT_HARAMBE_RIGHT = "resources/graphics/hit-harambe-right.png";
-const auto HIT_HARAMBE_LEFT = "resources/graphics/hit-harambe-left.png";
-const auto HIT_HARAMBE_UP = "resources/graphics/hit-harambe-up.png";
-const auto HIT_HARAMBE_DOWN = "resources/graphics/hit-harambe-down.png";
+const auto HIT_HARAMBE_RIGHT = resourcePath() + "resources/graphics/hit-harambe-right.png";
+const auto HIT_HARAMBE_LEFT = resourcePath() + "resources/graphics/hit-harambe-left.png";
+const auto HIT_HARAMBE_UP = resourcePath() + "resources/graphics/hit-harambe-up.png";
+const auto HIT_HARAMBE_DOWN = resourcePath() + "resources/graphics/hit-harambe-down.png";
 
-const auto HIT_SUPER_HARAMBE_RIGHT = "resources/graphics/hit-super-harambe-right.png";
-const auto HIT_SUPER_HARAMBE_LEFT = "resources/graphics/hit-super-harambe-left.png";
-const auto HIT_SUPER_HARAMBE_UP = "resources/graphics/hit-super-harambe-up.png";
-const auto HIT_SUPER_HARAMBE_DOWN = "resources/graphics/hit-super-harambe-down.png";
+const auto HIT_SUPER_HARAMBE_RIGHT = resourcePath() + "resources/graphics/hit-super-harambe-right.png";
+const auto HIT_SUPER_HARAMBE_LEFT = resourcePath() + "resources/graphics/hit-super-harambe-left.png";
+const auto HIT_SUPER_HARAMBE_UP = resourcePath() + "resources/graphics/hit-super-harambe-up.png";
+const auto HIT_SUPER_HARAMBE_DOWN = resourcePath() + "resources/graphics/hit-super-harambe-down.png";
 
-const auto HARAMBE_DEAD = "resources/graphics/harambe-dead.png";
-const auto HARAMBE_HEAD = "resources/graphics/harambe-head.png";
+const auto HARAMBE_DEAD = resourcePath() + "resources/graphics/harambe-dead.png";
+const auto HARAMBE_HEAD = resourcePath() + "resources/graphics/harambe-head.png";
 
 /*------------------- Police Sprites --------------------------*/
 
-const auto RED_POLICE = "resources/graphics/red_police.png";
-const auto GREEN_POLICE = "resources/graphics/green_police.png";
-const auto PURPLE_POLICE = "resources/graphics/purple_police.png";
-const auto BROWN_POLICE = "resources/graphics/brown_police.png";
-const auto BLUE_POLICE = "resources/graphics/blue_police.png";
+const auto RED_POLICE = resourcePath() + "resources/graphics/red_police.png";
+const auto GREEN_POLICE = resourcePath() + "resources/graphics/green_police.png";
+const auto PURPLE_POLICE = resourcePath() + "resources/graphics/purple_police.png";
+const auto BROWN_POLICE = resourcePath() + "resources/graphics/brown_police.png";
+const auto BLUE_POLICE = resourcePath() + "resources/graphics/blue_police.png";
 
-const auto POLICE_DEAD = "resources/graphics/police_dead.png";
+const auto POLICE_DEAD = resourcePath() + "resources/graphics/police_dead.png";
 
-const auto RED_HEAD = "resources/graphics/red-head.png";
-const auto GREEN_HEAD = "resources/graphics/green-head.png";
-const auto PURPLE_HEAD = "resources/graphics/purple-head.png";
-const auto BROWN_HEAD = "resources/graphics/brown-head.png";
+const auto RED_HEAD = resourcePath() + "resources/graphics/red-head.png";
+const auto GREEN_HEAD = resourcePath() + "resources/graphics/green-head.png";
+const auto PURPLE_HEAD = resourcePath() + "resources/graphics/purple-head.png";
+const auto BROWN_HEAD = resourcePath() + "resources/graphics/brown-head.png";
 
 /*-------------------------------------------------------------*/
 
 /*------------------- Coffin Sprites --------------------------*/
 
-const auto COFFIN_1 = "resources/graphics/coffin1.png";
-const auto COFFIN_2 = "resources/graphics/coffin2.png";
-const auto COFFIN_3 = "resources/graphics/coffin3.png";
-const auto COFFIN_4 = "resources/graphics/coffin4.png";
-const auto COFFIN_5 = "resources/graphics/coffin5.png";
-const auto COFFIN_6 = "resources/graphics/coffin6.png";
-const auto COFFIN_7 = "resources/graphics/coffin7.png";
-const auto COFFIN_8 = "resources/graphics/coffin8.png";
+const auto COFFIN_1 = resourcePath() + "resources/graphics/coffin1.png";
+const auto COFFIN_2 = resourcePath() + "resources/graphics/coffin2.png";
+const auto COFFIN_3 = resourcePath() + "resources/graphics/coffin3.png";
+const auto COFFIN_4 = resourcePath() + "resources/graphics/coffin4.png";
+const auto COFFIN_5 = resourcePath() + "resources/graphics/coffin5.png";
+const auto COFFIN_6 = resourcePath() + "resources/graphics/coffin6.png";
+const auto COFFIN_7 = resourcePath() + "resources/graphics/coffin7.png";
+const auto COFFIN_8 = resourcePath() + "resources/graphics/coffin8.png";
 
 /*-------------------------------------------------------------*/
 
 /*------------------- Xue + Sakura Sprites --------------------*/
 
-const auto SAKURA_TREE = "resources/graphics/sakura.png";
+const auto SAKURA_TREE = resourcePath() + "resources/graphics/sakura.png";
 
-const auto PETALS_1 = "resources/graphics/petals1.png";
-const auto PETALS_2 = "resources/graphics/petals2.png";
-const auto PETALS_3 = "resources/graphics/petals3.png";
-const auto PETALS_4 = "resources/graphics/petals4.png";
-const auto PETALS_5 = "resources/graphics/petals5.png";
-const auto PETALS_6 = "resources/graphics/petals6.png";
-const auto PETALS_7 = "resources/graphics/petals7.png";
-const auto PETALS_8 = "resources/graphics/petals8.png";
-const auto PETALS_9 = "resources/graphics/petals9.png";
-const auto PETALS_10 = "resources/graphics/petals10.png";
-const auto PETALS_11 = "resources/graphics/petals11.png";
+const auto PETALS_1 = resourcePath() + "resources/graphics/petals1.png";
+const auto PETALS_2 = resourcePath() + "resources/graphics/petals2.png";
+const auto PETALS_3 = resourcePath() + "resources/graphics/petals3.png";
+const auto PETALS_4 = resourcePath() + "resources/graphics/petals4.png";
+const auto PETALS_5 = resourcePath() + "resources/graphics/petals5.png";
+const auto PETALS_6 = resourcePath() + "resources/graphics/petals6.png";
+const auto PETALS_7 = resourcePath() + "resources/graphics/petals7.png";
+const auto PETALS_8 = resourcePath() + "resources/graphics/petals8.png";
+const auto PETALS_9 = resourcePath() + "resources/graphics/petals9.png";
+const auto PETALS_10 = resourcePath() + "resources/graphics/petals10.png";
+const auto PETALS_11 = resourcePath() + "resources/graphics/petals11.png";
 
-const auto PIAO_PIAO = "resources/graphics/piao-piao.png";
+const auto PIAO_PIAO = resourcePath() + "resources/graphics/piao-piao.png";
 
 /*-------------------------------------------------------------*/
 
-const auto WALL_FILEPATH = "resources/graphics/wall.png";
-const auto CORNER_FILEPATH = "resources/graphics/corner.png";
-const auto GATE_FILEPATH = "resources/graphics/gate.png";
-const auto BROKEN_GATE_FILEPATH = "resources/graphics/broken-gate.png";
-const auto BANANA_FILEPATH = "resources/graphics/banana.png";
-const auto POWER_PELLET_FILEPATH = "resources/graphics/power-pellet.png";
-const auto SUPER_PELLET_FILEPATH = "resources/graphics/super-pellet.png";
-const auto KEY_FILEPATH = "resources/graphics/key.png";
-const auto EMPTY_FILEPATH = "resources/graphics/empty.png";
-const auto BLANK_BUTTON_FILEPATH = "resources/graphics/blank-button.png";
-const auto QUESTION_MARK_FILEPATH = "resources/graphics/question-mark.png";
+const auto WALL_FILEPATH = resourcePath() + "resources/graphics/wall.png";
+const auto CORNER_FILEPATH = resourcePath() + "resources/graphics/corner.png";
+const auto GATE_FILEPATH = resourcePath() + "resources/graphics/gate.png";
+const auto BROKEN_GATE_FILEPATH = resourcePath() + "resources/graphics/broken-gate.png";
+const auto BANANA_FILEPATH = resourcePath() + "resources/graphics/banana.png";
+const auto POWER_PELLET_FILEPATH = resourcePath() + "resources/graphics/power-pellet.png";
+const auto SUPER_PELLET_FILEPATH = resourcePath() + "resources/graphics/super-pellet.png";
+const auto KEY_FILEPATH = resourcePath() + "resources/graphics/key.png";
+const auto EMPTY_FILEPATH = resourcePath() + "resources/graphics/empty.png";
+const auto BLANK_BUTTON_FILEPATH = resourcePath() + "resources/graphics/blank-button.png";
+const auto QUESTION_MARK_FILEPATH = resourcePath() + "resources/graphics/question-mark.png";
 
 // Fonts
-const auto FINE_8_BIT_FONT_FILEPATH = "resources/fonts/retro_gaming.ttf";
-const auto COARSE_8_BIT_FONT_FILEPATH = "resources/fonts/8-bit-pusab.ttf";
-const auto PRESS_START_8_BIT_FONT_FILEPATH = "resources/fonts/pressStart.ttf";
-const auto ANCIENT_8_BIT_FONT_FILEPATH = "resources/fonts/ancient-modern.ttf";
+const auto FINE_8_BIT_FONT_FILEPATH = resourcePath() + "resources/fonts/retro_gaming.ttf";
+const auto COARSE_8_BIT_FONT_FILEPATH = resourcePath() + "resources/fonts/8-bit-pusab.ttf";
+const auto PRESS_START_8_BIT_FONT_FILEPATH = resourcePath() + "resources/fonts/pressStart.ttf";
+const auto ANCIENT_8_BIT_FONT_FILEPATH = resourcePath() + "resources/fonts/ancient-modern.ttf";
 
 // Audio
-const auto BUTTON_SFX1_FILEPATH = "resources/audio/button1.wav";
-const auto SELECT_BUTTON_SFX1_FILEPATH = "resources/audio/select-button.wav";
-const auto KEY_SFX_FILEPATH = "resources/audio/key.wav";
-const auto GATE_LINK_SFX_FILEPATH = "resources/audio/gate-link.wav";
-const auto GATE_BREAK_SFX_FILEPATH = "resources/audio/gate-break.wav";
-const auto PLAYER_DIE_SFX_FILEPATH = "resources/audio/harambe-death.wav";
-const auto SUPER_PELLET_SFX_FILEPATH = "resources/audio/super-pellet.wav";
-const auto POWER_PELLET_SFX_FILEPATH = "resources/audio/power-pellet.wav";
-const auto ERROR_BUTTON_SFX_FILEPATH = "resources/audio/button-error.wav";
-const auto EAT_GHOST_SFX_FILEPATH = "resources/audio/punch.wav";
+const auto BUTTON_SFX1_FILEPATH = resourcePath() + "resources/audio/button1.wav";
+const auto SELECT_BUTTON_SFX1_FILEPATH = resourcePath() + "resources/audio/select-button.wav";
+const auto KEY_SFX_FILEPATH = resourcePath() + "resources/audio/key.wav";
+const auto GATE_LINK_SFX_FILEPATH = resourcePath() + "resources/audio/gate-link.wav";
+const auto GATE_BREAK_SFX_FILEPATH = resourcePath() + "resources/audio/gate-break.wav";
+const auto PLAYER_DIE_SFX_FILEPATH = resourcePath() + "resources/audio/harambe-death.wav";
+const auto SUPER_PELLET_SFX_FILEPATH = resourcePath() + "resources/audio/super-pellet.wav";
+const auto POWER_PELLET_SFX_FILEPATH = resourcePath() + "resources/audio/power-pellet.wav";
+const auto ERROR_BUTTON_SFX_FILEPATH = resourcePath() + "resources/audio/button-error.wav";
+const auto EAT_GHOST_SFX_FILEPATH = resourcePath() + "resources/audio/punch.wav";
 
-const auto COFFIN_DANCE_FILEPATH = "resources/audio/coffin-dance.ogg";
-const auto UNRAVEL_FILEPATH = "resources/audio/unravel.ogg";
-const auto XUE_HUA_PIAO_FILEPATH = "resources/audio/xue-hua-piao.ogg";
-const auto GIORNO_FILEPATH = "resources/audio/giorno.ogg";
-const auto CARAMELLDANSEN_FILEPATH = "resources/audio/caramelldansen.ogg";
-const auto MEGALOVANIA_FILEPATH = "resources/audio/megalovania.ogg";
-const auto FULL_METAL_FILEPATH = "resources/audio/full-metal.ogg";
-const auto CRAB_RAVE_FILEPATH = "resources/audio/crab-rave.ogg";
-const auto DEJA_VU_FILEPATH = "resources/audio/deja-vu.ogg";
-const auto RUNNING_IN_90S_FILEPATH = "resources/audio/running-in-90s.ogg";
-const auto RICK_ROLL_FILEPATH = "resources/audio/rick-roll.ogg";
-const auto LEVAN_POLKA_FILEPATH = "resources/audio/levan-polka.ogg";
-const auto DAMAGED_CODA_FILEPATH = "resources/audio/damaged-coda.ogg";
-const auto SANDSTORM_FILEPATH = "resources/audio/sandstorm.ogg";
+const auto COFFIN_DANCE_FILEPATH = resourcePath() + "resources/audio/coffin-dance.ogg";
+const auto UNRAVEL_FILEPATH = resourcePath() + "resources/audio/unravel.ogg";
+const auto XUE_HUA_PIAO_FILEPATH = resourcePath() + "resources/audio/xue-hua-piao.ogg";
+const auto GIORNO_FILEPATH = resourcePath() + "resources/audio/giorno.ogg";
+const auto CARAMELLDANSEN_FILEPATH = resourcePath() + "resources/audio/caramelldansen.ogg";
+const auto MEGALOVANIA_FILEPATH = resourcePath() + "resources/audio/megalovania.ogg";
+const auto FULL_METAL_FILEPATH = resourcePath() + "resources/audio/full-metal.ogg";
+const auto CRAB_RAVE_FILEPATH = resourcePath() + "resources/audio/crab-rave.ogg";
+const auto DEJA_VU_FILEPATH = resourcePath() + "resources/audio/deja-vu.ogg";
+const auto RUNNING_IN_90S_FILEPATH = resourcePath() + "resources/audio/running-in-90s.ogg";
+const auto RICK_ROLL_FILEPATH = resourcePath() + "resources/audio/rick-roll.ogg";
+const auto LEVAN_POLKA_FILEPATH = resourcePath() + "resources/audio/levan-polka.ogg";
+const auto DAMAGED_CODA_FILEPATH = resourcePath() + "resources/audio/damaged-coda.ogg";
+const auto SANDSTORM_FILEPATH = resourcePath() + "resources/audio/sandstorm.ogg";
 
 const auto PLAYLIST = std::vector<std::string>{"full metal",
                                     "sandstorm",
@@ -253,19 +255,19 @@ const auto PLAYLIST = std::vector<std::string>{"full metal",
                                     "levan polka"};
 
 // Mazes
-const auto CLASSIC_LAYOUT_FILEPATH = "resources/mazes/classic/layout.txt";
-const auto CLASSIC_ROTATION_FILEPATH = "resources/mazes/classic/orientations.txt";
-const auto CLASSIC_KEYMAP_FILEPATH = "resources/mazes/classic/key_map_1.txt";
-const auto CLASSIC_STARTPOS_FILEPATH = "resources/mazes/classic/start_positions.txt";
+const auto CLASSIC_LAYOUT_FILEPATH = resourcePath() + "resources/mazes/classic/layout.txt";
+const auto CLASSIC_ROTATION_FILEPATH = resourcePath() + "resources/mazes/classic/orientations.txt";
+const auto CLASSIC_KEYMAP_FILEPATH = resourcePath() + "resources/mazes/classic/key_map_1.txt";
+const auto CLASSIC_STARTPOS_FILEPATH = resourcePath() + "resources/mazes/classic/start_positions.txt";
 
-const auto MAZE_DIRECTORY = "resources/mazes/";
-const auto MAZE_LIST_FILEPATH = "resources/mazes/maze_list.txt";
+const auto MAZE_DIRECTORY = resourcePath() + "resources/mazes/";
+const auto MAZE_LIST_FILEPATH = resourcePath() + "resources/mazes/maze_list.txt";
 
 // High Scores
-const auto HIGH_SCORE_FILEPATH = "resources/highscores/highscores.txt";
-const auto HIGH_SCORE_DIRECTORY = "resources/highscores/";
+const auto HIGH_SCORE_FILEPATH = resourcePath() + "resources/highscores/highscores.txt";
+const auto HIGH_SCORE_DIRECTORY = resourcePath() + "resources/highscores/";
 
-const auto CREDITS_FILEPATH = "resources/credits.txt";
+const auto CREDITS_FILEPATH = resourcePath() + "resources/credits.txt";
 
 
 #endif
