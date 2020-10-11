@@ -54,6 +54,7 @@ void HighScoreState::update(float dt)
     auto col = static_cast<int>((timeFlash/tFlash) * 6) % 6;
 
     title_.setFillColor(colors[col]);
+    background.setColor(colors[col]);
 
     exitButton_.update(game_->window);
 
@@ -78,6 +79,7 @@ void HighScoreState::draw(float dt)
     game_->window.clear();
     game_->window.setView(game_->view);
 
+    game_->window.draw(background);
     game_->window.draw(exitButton_);
     game_->window.draw(rightButton_);
     game_->window.draw(leftButton_);
@@ -120,6 +122,8 @@ void HighScoreState::loadTitle(AssetManager& assetManager)
                          title_.getGlobalBounds().height/2.0f);
     title_.setPosition(GAME_WIDTH/2, GAME_HEIGHT/5);
     title_.setScale(1.1,1.1);
+
+    background.setTexture(*assetManager.getTexture("hs background"));
 }
 
 void HighScoreState::loadMazes(AssetManager& assetManager)

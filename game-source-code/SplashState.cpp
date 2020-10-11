@@ -32,7 +32,7 @@ void SplashState::processInput()
     {
         if (game_->inputManager.isExitRequest(event))
             game_->window.close();
-        
+
         if (event.type == sf::Event::Resized)
             game_->view = game_->inputManager.getLetterboxView(game_->view, event.size.width, event.size.height);
     }
@@ -116,7 +116,7 @@ void SplashState::loadTextures(AssetManager& assetManager)
     assetManager.loadTexture("splash background", SPLASH_BACKGROUND_FILEPATH);
     assetManager.loadTexture("menu background", MENU_BACKGROUND_FILEPATH);
     assetManager.loadTexture("aux background", AUX_BACKGROUND_FILEPATH);
-
+    assetManager.loadTexture("hs background", HS_BACKGROUND_FILEPATH);
     assetManager.loadTexture("grass", GRASS_FILEPATH);
 
     // Buttons

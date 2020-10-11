@@ -99,6 +99,7 @@ const auto PI = 2*acos(0.0);
 const auto SPLASH_BACKGROUND_FILEPATH = "resources/graphics/splash-screen.png";
 const auto MENU_BACKGROUND_FILEPATH = "resources/graphics/bg1.png";
 const auto AUX_BACKGROUND_FILEPATH = "resources/graphics/bg4.png";
+const auto HS_BACKGROUND_FILEPATH = "resources/graphics/bg6.png";
 
 const auto GRASS_FILEPATH = "resources/graphics/grass.png";
 

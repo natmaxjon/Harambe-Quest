@@ -31,7 +31,10 @@ private:
     string currentMaze_;
     vector<string>::iterator mazeIt;
 
+    sf::Sprite background;
+
     float timeFlash = 0;
+
 
     sf::Text mazeDisplay_;
     vector<sf::Text> entries;
